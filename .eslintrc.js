@@ -10,6 +10,7 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    __DEV__: 'readonly',
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -24,7 +25,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'prettier/prettier': ['error', {singleQuote: true}],
+    'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       'warn',
       {

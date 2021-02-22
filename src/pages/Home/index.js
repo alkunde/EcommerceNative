@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   Product,
+  ProductImage,
   ProductTitle,
   ProductPrice,
   AddButton,
@@ -20,20 +21,26 @@ class Home extends Component {
       products: [
         {
           id: 1,
-          title: 'Teste',
-          price: 'R$ 190,99',
+          title: 'Tênis de Caminhada Leve Confortável',
+          price: 179.9,
+          image:
+            'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
           amount: 0,
         },
         {
           id: 2,
-          title: 'Outro',
-          price: 'R$ 30,00',
+          title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
+          price: 139.9,
+          image:
+            'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
           amount: 0,
         },
         {
           id: 3,
-          title: 'Tenis novo',
-          price: 'R$ 30,00',
+          title: 'Tênis Adidas Duramo Lite 2.0',
+          price: 219.9,
+          image:
+            'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
           amount: 0,
         },
       ],
@@ -41,7 +48,8 @@ class Home extends Component {
   }
 
   renderProduct = ({ item }) => (
-    <Product>
+    <Product key={item.id}>
+      <ProductImage source={{ uri: item.image }} />
       <ProductTitle>{item.title}</ProductTitle>
       <ProductPrice>{item.price}</ProductPrice>
       <AddButton onPress={() => {}}>

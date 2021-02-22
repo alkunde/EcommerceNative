@@ -59,4 +59,5 @@ export const AddButtonText = styled.Text`
   text-align: center;
   font-weight: bold;
   color: #fff;
+  text-transform: uppercase;
 `;

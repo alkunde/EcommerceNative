@@ -78,6 +78,7 @@ export const TotalText = styled.Text`
   text-align: center;
   color: #999;
   font-weight: bold;
+  text-transform: uppercase;
 `;
 
 export const TotalAmount = styled.Text`

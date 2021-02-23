@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import api from '../../services/api';
 // import { formatPrice } from '../../util/format';
 
 import {
+  Wrapper,
+  ContainerHeader,
   Container,
   Product,
   ProductImage,
@@ -18,7 +20,11 @@ import {
   ProductAmount,
   ProductAmountText,
   AddButtonText,
+  Logo,
+  BasketContainer,
+  ItemCount,
 } from './styles';
+import navigation from '../../services/navigation';
 
 class Home extends Component {
   constructor(props) {
@@ -69,10 +75,19 @@ class Home extends Component {
   };
 
   render() {
-    const { products } = this.state;
+    const { products, cartSize } = this.state;
 
     return (
       <Container>
+        <Wrapper>
+          <ContainerHeader>
+            <Logo />
+            <BasketContainer onPress={() => navigation.navigate('Cart')}>
+              <Icon name="shopping-basket" color="#fff" size={24} />
+              <ItemCount>{cartSize || 0}</ItemCount>
+            </BasketContainer>
+          </ContainerHeader>
+        </Wrapper>
         <FlatList
           horizontal
           data={products}

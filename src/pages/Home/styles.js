@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 import { darken } from 'polished';
+
 import colors from '../../styles/colors';
+import logo from '../../assets/logo.png';
 
 export const Container = styled.View`
   background: ${colors.dark};
@@ -24,7 +26,7 @@ export const ProductTitle = styled.Text`
 `;
 
 export const ProductPrice = styled.Text`
-  margin: 14px 0px;
+  margin: 14px 0;
   font-size: 20px;
   margin-bottom: 14px;
   font-weight: bold;
@@ -51,7 +53,7 @@ export const ProductAmount = styled.View`
 
 export const ProductAmountText = styled.Text`
   color: #fff;
-  margin: 0px 4px 0px 10px;
+  margin: 0 4px 0 10px;
 `;
 
 export const AddButtonText = styled.Text`
@@ -60,4 +62,46 @@ export const AddButtonText = styled.Text`
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
+`;
+
+export const Wrapper = styled.SafeAreaView`
+  flex-direction: row;
+`;
+
+export const ContainerHeader = styled.View`
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+export const Logo = styled.Image.attrs({
+  source: logo,
+  resizeMode: 'cover',
+})`
+  width: 185px;
+  height: 24px;
+`;
+
+export const BasketContainer = styled.TouchableOpacity`
+  height: 24px;
+  width: 24px;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
+`;
+
+export const ItemCount = styled.Text`
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  right: -8px;
+  min-width: 18px;
+  min-height: 18px;
+  background: ${colors.primary};
+  color: #fff;
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 9px;
+  overflow: hidden;
 `;

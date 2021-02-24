@@ -29,7 +29,21 @@ import {
   EmptyText,
 } from './styles';
 
-function Cart({ navigation, products }) {
+function Cart({
+  navigation,
+  products,
+  total,
+  removeFormCart,
+  updateAmountRequest,
+}) {
+  function decrement(product) {
+    updateAmountRequest(product.id, product.amount - 1);
+  }
+
+  function increment(product) {
+    updateAmountRequest(product.id, product.amount + 1);
+  }
+
   return (
     <Container>
       {products.length ? (
@@ -41,14 +55,18 @@ function Cart({ navigation, products }) {
                   <ProductImage source={{ uri: product.image }} />
                   <ProductDetails>
                     <ProductTitle>{product.title}</ProductTitle>
-                    <ProductPrice>{product.price}</ProductPrice>
+                    <ProductPrice>{product.priceFormatted}</ProductPrice>
                   </ProductDetails>
-                  <ProductDelete onPress={() => {}}>
-                    <Icon name="delete-forever" color="#7159c1" size={24} />
+                  <ProductDelete onPress={() => removeFormCart(product.id)}>
+                    <Icon
+                      name="delete-forever"
+                      color={colors.primary}
+                      size={24}
+                    />
                   </ProductDelete>
                 </ProductInfo>
                 <ProductControls>
-                  <ProductControlButton onPress={() => {}}>
+                  <ProductControlButton onPress={() => decrement(product)}>
                     <Icon
                       name="remove-circle-outline"
                       color={colors.primary}
@@ -56,7 +74,7 @@ function Cart({ navigation, products }) {
                     />
                   </ProductControlButton>
                   <ProductAmount value={String(product.amount)} />
-                  <ProductControlButton onPress={() => {}}>
+                  <ProductControlButton onPress={() => increment(product)}>
                     <Icon
                       name="add-circle-outline"
                       color={colors.primary}
@@ -70,7 +88,7 @@ function Cart({ navigation, products }) {
           </Products>
           <TotalContainer>
             <TotalText>Total</TotalText>
-            <TotalAmount>R$ 0,00</TotalAmount>
+            <TotalAmount>{total}</TotalAmount>
             <Order>
               <OrderText>Finalizar pedido</OrderText>
             </Order>
@@ -78,7 +96,7 @@ function Cart({ navigation, products }) {
         </>
       ) : (
         <EmptyContainer>
-          <Icon name="add-shopping-cart" color="#fff" size={60} />
+          <Icon name="remove-shopping-cart" color={colors.gray} size={60} />
           <EmptyText>Carrinho vazio</EmptyText>
         </EmptyContainer>
       )}

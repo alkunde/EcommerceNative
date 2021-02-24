@@ -9,8 +9,6 @@ import api from '../../services/api';
 // import { formatPrice } from '../../util/format';
 
 import {
-  Wrapper,
-  ContainerHeader,
   Container,
   Product,
   ProductImage,
@@ -20,11 +18,7 @@ import {
   ProductAmount,
   ProductAmountText,
   AddButtonText,
-  Logo,
-  BasketContainer,
-  ItemCount,
 } from './styles';
-import navigation from '../../services/navigation';
 
 class Home extends Component {
   constructor(props) {
@@ -43,7 +37,7 @@ class Home extends Component {
 
     const data = response.data.map((product) => ({
       ...product,
-      priceFormatted: 'R$ 100,00',
+      priceFormatted: String(product.price),
     }));
 
     this.setState({ products: data });
@@ -79,15 +73,6 @@ class Home extends Component {
 
     return (
       <Container>
-        <Wrapper>
-          <ContainerHeader>
-            <Logo />
-            <BasketContainer onPress={() => navigation.navigate('Cart')}>
-              <Icon name="shopping-basket" color="#fff" size={24} />
-              <ItemCount>{cartSize || 0}</ItemCount>
-            </BasketContainer>
-          </ContainerHeader>
-        </Wrapper>
         <FlatList
           horizontal
           data={products}

@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import colors from '../../styles/colors';
+import { formatPrice } from '../../util/format';
 
 import {
   Container,
@@ -55,7 +56,7 @@ function Cart({
                   <ProductImage source={{ uri: product.image }} />
                   <ProductDetails>
                     <ProductTitle>{product.title}</ProductTitle>
-                    <ProductPrice>{product.priceFormatted}</ProductPrice>
+                    <ProductPrice>{formatPrice(product.price)}</ProductPrice>
                   </ProductDetails>
                   <ProductDelete onPress={() => removeFormCart(product.id)}>
                     <Icon
@@ -107,12 +108,14 @@ function Cart({
 const mapStateToProps = (state) => ({
   products: state.cart.map((product) => ({
     ...product,
-    subtotal: product.price * product.amount,
+    subtotal: formatPrice(product.price * product.amount),
     priceFormatted: product.price,
   })),
-  total: state.cart.reduce(
-    (total, product) => total + product.price * product.amount,
-    0
+  total: formatPrice(
+    state.cart.reduce(
+      (total, product) => total + product.price * product.amount,
+      0
+    )
   ),
 });
 

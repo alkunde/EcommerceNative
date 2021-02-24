@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import api from '../../services/api';
+import { formatPrice } from '../../util/format';
 
 import {
   Container,
@@ -37,7 +38,7 @@ class Home extends Component {
 
     const data = response.data.map((product) => ({
       ...product,
-      priceFormatted: String(product.price),
+      priceFormatted: formatPrice(product.price),
     }));
 
     this.setState({ products: data });

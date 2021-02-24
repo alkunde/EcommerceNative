@@ -59,7 +59,7 @@ function Cart({
                   </ProductDetails>
                   <ProductDelete onPress={() => removeFormCart(product.id)}>
                     <Icon
-                      name="delete-forever"
+                      name="delete-outline"
                       color={colors.primary}
                       size={24}
                     />

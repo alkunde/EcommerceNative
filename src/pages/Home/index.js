@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import api from '../../services/api';
-// import { formatPrice } from '../../util/format';
 
 import {
   Container,
@@ -19,6 +18,7 @@ import {
   ProductAmountText,
   AddButtonText,
 } from './styles';
+import colors from '../../styles/colors';
 
 class Home extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class Home extends Component {
         <ProductPrice>{item.priceFormatted}</ProductPrice>
         <AddButton onPress={() => this.handleAddProduct(item.id)}>
           <ProductAmount>
-            <Icon name="add-shopping-cart" color="#fff" size={25} />
+            <Icon name="add-shopping-cart" color={colors.white} size={25} />
             <ProductAmountText>{amount[item.id] || 0}</ProductAmountText>
           </ProductAmount>
           <AddButtonText>Adicionar</AddButtonText>
@@ -69,7 +69,7 @@ class Home extends Component {
   };
 
   render() {
-    const { products, cartSize } = this.state;
+    const { products } = this.state;
 
     return (
       <Container>

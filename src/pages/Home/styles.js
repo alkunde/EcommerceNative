@@ -9,7 +9,7 @@ export const Container = styled.View`
 `;
 
 export const Product = styled.View`
-  background: #fff;
+  background: ${colors.white};
   padding: 10px;
   margin: 15px;
   border-radius: 4px;
@@ -52,7 +52,7 @@ export const ProductAmount = styled.View`
 `;
 
 export const ProductAmountText = styled.Text`
-  color: #fff;
+  color: ${colors.white};
   margin: 0 4px 0 10px;
 `;
 
@@ -60,7 +60,7 @@ export const AddButtonText = styled.Text`
   flex: 1;
   text-align: center;
   font-weight: bold;
-  color: #fff;
+  color: ${colors.white};
   text-transform: uppercase;
 `;
 
@@ -99,7 +99,7 @@ export const ItemCount = styled.Text`
   min-width: 18px;
   min-height: 18px;
   background: ${colors.primary};
-  color: #fff;
+  color: ${colors.white};
   font-size: 12px;
   padding: 2px;
   border-radius: 9px;

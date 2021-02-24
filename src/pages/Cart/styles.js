@@ -4,7 +4,7 @@ import colors from '../../styles/colors';
 
 export const Container = styled.View`
   padding: 10px;
-  background: #fff;
+  background: ${colors.white};
   border-radius: 4px;
   margin: 15px;
 `;
@@ -44,7 +44,7 @@ export const ProductDelete = styled.TouchableOpacity`
 export const ProductControls = styled.View`
   flex-direction: row;
   align-items: center;
-  background: #eee;
+  background: ${colors.light_gray};
   padding: 8px;
   border-radius: 4px;
 `;
@@ -54,10 +54,10 @@ export const ProductControlButton = styled.TouchableOpacity``;
 export const ProductAmount = styled.TextInput.attrs({
   readonly: true,
 })`
-  background: #fff;
+  background: ${colors.white};
   padding: 5px;
   margin: 0 5px;
-  border: 1px solid #ddd;
+  border: 1px solid ${colors.gray};
   border-radius: 4px;
   min-width: 52px;
   text-align: center;
@@ -76,7 +76,7 @@ export const TotalContainer = styled.View`
 
 export const TotalText = styled.Text`
   text-align: center;
-  color: #999;
+  color: ${colors.gray};
   font-weight: bold;
   text-transform: uppercase;
 `;
@@ -96,7 +96,7 @@ export const Order = styled.TouchableOpacity`
 `;
 
 export const OrderText = styled.Text`
-  color: #fff;
+  color: ${colors.white};
   font-weight: bold;
   font-size: 14px;
   text-align: center;
